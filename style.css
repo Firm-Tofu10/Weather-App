@@ -1,9 +1,32 @@
 .pageStyle {
     background-color: black;
 }
-
-.pageHeader {
+#pageHeader {
     color: yellow;
     text-align: center;
     font-size: 60px;
+    height: 75px;
+    width: 2600px;
+    background-color:blue;
+}
+
+.container {
+    border: 8px solid grey;
+    height: 500px;
+    width: 2400px;
+    position: absolute;
+    left: 70px;
+    background-color:ghostwhite;
+    border-radius: 50px;
+}
+
+#containerB {
+    border: 8px solid grey;
+    height: 500px;
+    width: 2400px;
+    position: absolute;
+    background-color:ghostwhite;
+    border-radius: 50px;
+    top: 1000px;
+    left: 70px;
 }
