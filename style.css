@@ -10,23 +10,39 @@
     background-color:blue;
 }
 
-.container {
+#containerA {
     border: 8px solid grey;
     height: 500px;
-    width: 2400px;
+    width: 500px;
     position: absolute;
     left: 70px;
-    background-color:ghostwhite;
+    background-color:blue;
     border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+    top: 140px;
 }
 
 #containerB {
     border: 8px solid grey;
     height: 500px;
-    width: 2400px;
+    width: 1700px;
     position: absolute;
-    background-color:ghostwhite;
+    background-color:grey;
     border-radius: 50px;
-    top: 1000px;
-    left: 70px;
+    top: 150px;
+    left: 700px;
+}
+.btn {
+height: 50px;
+color: blue;
+}
+#5days {
+border: 4px solid blue;
+border-radius: 50px;
+height: 300px;
+width: 300px;
+background-color: gray;
 }
