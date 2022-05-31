@@ -29,6 +29,7 @@ function locationcall(lat, lon, cityname) {
             sectionTag.appendChild(h2Tag)
             var ptag = document.createElement("p")
             ptag.textContent = "Temperture:" + apiDT.weather[0].description
+            console.log(description)
             sectionTag.appendChild(ptag)
             var wind = document.createElement("p")
             wind.textContent = "wind_speed:" + apiDT.wind_speed
