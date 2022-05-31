@@ -19,7 +19,7 @@ function apiCall(cityname) {
 
 
 function locationcall(lat, lon, cityname) {
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alert&appid=${APIkey}`) //template literals
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alert&appid=${APIkey}&units=imperial`) //template literals
         .then(data => data.json())
         .then(apiDT => {
             console.log(apiDT)
@@ -28,23 +28,25 @@ function locationcall(lat, lon, cityname) {
             h2Tag.textContent = cityname
             sectionTag.appendChild(h2Tag)
             var ptag = document.createElement("p")
-            ptag.textContent = "Temperture:" + apiDT.weather[0].description
-            console.log(description)
+            ptag.textContent = "Temperture:" + apiDT.current.temp
             sectionTag.appendChild(ptag)
             var wind = document.createElement("p")
-            wind.textContent = "wind_speed:" + apiDT.wind_speed
+            wind.textContent = "wind_speed:" + apiDT.current.wind_speed
             var uvi = document.createElement("p")
-            uvi.textContent = "uvi:" + apiDT.uvi
+            uvi.textContent = "uvi:" + apiDT.current.uvi
             var humidity = document.createElement("p")
-            humidity.textContent = "humidity:" + apiDT.humidity
+            humidity.textContent = "humidity:" + apiDT.current.humidity
             var icon = document.createElement("img")
-            icon.setAttribute("src", `https://openweathermap.org/img/wn/${apiDT.weather[0].icon}.png`)
+            var Temp = document.createElement("p")
+            Temp.textContent = apiDT.current.weather[0].description
+            icon.setAttribute("src", `https://openweathermap.org/img/wn/${apiDT.current.weather[0].icon}@2x.png`) //http://openweathermap.org/img/wn/10d@2x.png
             sectionTag.appendChild(icon)
+            sectionTag.appendChild(Temp)
             sectionTag.appendChild(wind)
             sectionTag.appendChild(uvi)
             sectionTag.appendChild(humidity)
-            document.getElementById("containerB").inerhtml = sectionTag
-                
+            document.getElementById("containerB").appendChild(sectionTag)
+            console.log(locationcall)
 
-    })
+        })
 }
