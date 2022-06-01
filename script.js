@@ -40,6 +40,13 @@ function locationcall(lat, lon, cityname) {
             wind.textContent = "wind_speed:" + apiDT.current.wind_speed
             var uvi = document.createElement("p")
             uvi.textContent = "uvi:" + apiDT.current.uvi
+            if(apiDT.current.uvi > 8) {
+                uvi.className = "redUnsafe"
+            }else if(apiDT.current.uvi  > 3){
+                uvi.className = "yellowWarning"
+            }else{
+                uvi.className = "greenSafe"
+            }
             var humidity = document.createElement("p")
             humidity.textContent = "humidity:" + apiDT.current.humidity
             var icon = document.createElement("img")
