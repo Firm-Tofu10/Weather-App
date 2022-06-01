@@ -45,8 +45,35 @@ function locationcall(lat, lon, cityname) {
             sectionTag.appendChild(wind)
             sectionTag.appendChild(uvi)
             sectionTag.appendChild(humidity)
+            document.getElementById("containerB").innerHTML = ""
             document.getElementById("containerB").appendChild(sectionTag)
             console.log(locationcall)
-
+            for (let i = 0; i < 5; i++) {
+                var sectionTag = document.createElement("section")
+                // var h2Tag = document.createElement("h2")
+                // h2Tag.textContent = cityname
+                // sectionTag.appendChild(h2Tag)
+                var ptag = document.createElement("p")
+                ptag.textContent = "Temperture:" + apiDT.daily[i].temp.max
+                sectionTag.appendChild(ptag)
+                var wind = document.createElement("p")
+                wind.textContent = "wind_speed:" + apiDT.daily[i].wind_speed
+                var uvi = document.createElement("p")
+                uvi.textContent = "uvi:" + apiDT.daily[i].uvi
+                var humidity = document.createElement("p")
+                humidity.textContent = "humidity:" + apiDT.daily[i].humidity
+                var icon = document.createElement("img")
+                var Temp = document.createElement("p")
+                Temp.textContent = apiDT.daily[i].weather[0].description
+                icon.setAttribute("src", `https://openweathermap.org/img/wn/${apiDT.daily[i].weather[0].icon}@2x.png`) //http://openweathermap.org/img/wn/10d@2x.png
+                sectionTag.appendChild(icon)
+                sectionTag.appendChild(Temp)
+                sectionTag.appendChild(wind)
+                sectionTag.appendChild(uvi)
+                sectionTag.appendChild(humidity)
+                document.getElementById(`day${i + 1}`).innerHTML = ""
+                document.getElementById(`day${i + 1}`).appendChild(sectionTag)
+                console.log(locationcall)
+            }
         })
 }
