@@ -84,14 +84,21 @@ function locationcall(lat, lon, cityname) {
         })
 }
 
+
 function displayStorage() {
     var storage = JSON.parse( localStorage.getItem("weatherdashboardAPI")) || [] // || or operator
     document.getElementById("previous").innerHTML = ""
     for (let i =0; i < storage.length; i++) {
         var Temp = document.createElement("button")
         Temp.textContent = storage[i]
+        Temp.addEventListener("click",buttonpress)
         document.getElementById("previous").appendChild(Temp)
     }
 }
 
 displayStorage()
+
+function buttonpress(){
+    console.log(this.textContent,"onclick")
+    apiCall(this.textContent)
+}
