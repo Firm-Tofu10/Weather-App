@@ -14,6 +14,12 @@ function apiCall(cityname) {
             var lat = apiDT.coord.lat
             var lon = apiDT.coord.lon
             locationcall(lat, lon, cityname)
+            var storage = JSON.parse( localStorage.getItem("weatherdashboardAPI")) || [] // || or operator
+            if(storage.indexOf(cityname) === -1){
+            storage.push(cityname)
+            localStorage.setItem("weatherdashboardAPI",JSON.stringify(storage))
+            displayStorage()
+            }
         })
 }
 
@@ -77,3 +83,15 @@ function locationcall(lat, lon, cityname) {
             }
         })
 }
+
+function displayStorage() {
+    var storage = JSON.parse( localStorage.getItem("weatherdashboardAPI")) || [] // || or operator
+    document.getElementById("previous").innerHTML = ""
+    for (let i =0; i < storage.length; i++) {
+        var Temp = document.createElement("button")
+        Temp.textContent = storage[i]
+        document.getElementById("previous").appendChild(Temp)
+    }
+}
+
+displayStorage()
